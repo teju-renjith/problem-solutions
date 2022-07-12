@@ -1,0 +1,42 @@
+def merge(a,left,right,mid):
+    temp=[]
+    i=left
+    j=mid+1
+    invc=0
+    while i <=mid and j<=right:
+        if a[i]<=a[j]:
+            print("ok",a[i],a[j])
+            temp.append(a[i])
+            i+=1
+        else:
+            invc+=mid-i+1
+            print("count",invc,a[i],a[j])
+            temp.append(a[j])
+            j+=1
+    while i <=mid:
+        temp.append(a[i])
+        i+=1
+    while j<=right:
+        temp.append(a[j])
+        j+=1
+    
+    a[left:right+1]=temp
+    
+    return invc
+    
+def mergesort(nums,left,right,mid):
+    inv=0
+    if left<right:
+        inv+=mergesort(nums,left,mid,(left+mid)//2)
+        inv+=mergesort(nums,mid+1,right,(right+mid+1)//2)
+        inv+=merge(nums,left,right,mid)    
+    return inv
+    
+class Solution:
+    def reversePairs(self, nums: List[int]) -> int:
+        n=len(nums)
+        left=0
+        right=n-1
+        mid=(left+right)//2
+        return mergesort(nums,left,right,mid)
+        
