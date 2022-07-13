@@ -1,0 +1,50 @@
+def majorityElement(self, nums: List[int]) -> List[int]:
+        n=len(nums)//3
+        h={}
+        op=[]
+        for i in range(len(nums)):
+            if nums[i] in h:
+                h[nums[i]]+=1
+            else:
+                h[nums[i]]=1
+                
+            if h[nums[i]]>n and nums[i] not in op:
+                    op.append(nums[i])
+        return op
+        
+#################################################
+ 
+def majorityElement(self, nums: List[int]) -> List[int]:
+    n1=float('-inf')
+    n2=float('-inf')
+    c1=0
+    c2=0
+    for ele in nums:
+        if ele == n1:
+            c1+=1
+        elif ele == n2:
+            c2+=1
+        elif c1 == 0:
+            n1=ele
+            c1+=1
+        elif c2 == 0:
+            n2=ele
+            c2+=1
+        else:
+            c1-=1
+            c2-=1
+    op=[]
+    count1=0
+    count2=0
+    for i in nums:
+        if i == n1:
+            count1+=1
+        if i == n2:
+            count2+=1
+    if count1 > len(nums)//3:
+        op.append(n1)
+    if count2 > len(nums)//3:
+        op.append(n2)
+
+    return op
+    
