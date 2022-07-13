@@ -1,0 +1,30 @@
+ def myPow(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1
+        p=1
+        a=n/abs(n)
+        print(a)
+        if a==1:
+            for i in range(n):
+                p=p*x
+        else:
+            for i in range(abs(n)):
+                p=p/x
+        return p
+        
+ #################3
+ 
+ def myPow(self, x: float, n: int) -> float:
+        temp=abs(n)
+        ans=1
+        while temp:
+            if temp%2==0:
+                x=x*x
+                temp=temp/2
+            else:
+                ans=ans*x
+                temp-=1
+        if n>=0:
+            return ans
+        else:
+            return 1/ans
