@@ -1,0 +1,13 @@
+def findMinimumCoins(amount):
+    deno = [1, 2, 5, 10, 20, 50, 100, 500, 1000]
+    deno.reverse()
+    op=[]
+    n=len(deno)
+    i=0
+    while i<n and amount:
+        if deno[i]>amount:
+            i+=1
+        else:
+            op.append(deno[i])
+            amount-=deno[i]
+    return len(op)
