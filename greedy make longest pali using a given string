@@ -1,0 +1,21 @@
+def longestPalindrome(self, s: str) -> int:
+        s=list(s)
+        h={}
+        for i in s:
+            if i in h:
+                h[i]+=1
+            else:
+                h[i]=1
+        count=0
+        temp=0
+        for item in h:
+            if h[item]%2==0:
+                count+=h[item]
+            else:
+                temp=1
+                count+=h[item]-1
+        if temp==1:
+            count+=1
+        return count
+                
+NOTE: You need not use all the elements....if odd count then remove one and use remaining...finally put one so u can have middle                
