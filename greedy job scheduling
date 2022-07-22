@@ -1,0 +1,20 @@
+def jobScheduling(jobs):
+
+    jobs.sort(key=lambda jobs : jobs[1],reverse=True)
+    maxp=0
+    h={}
+    for job in jobs:
+        if job[0] not in h:
+            h[job[0]]=job[1]
+            maxp=maxp+job[1]
+        else:
+            d=job[0]-1
+            #print(d)
+            while d in h and d>0:
+                d-=1
+            if d==0:
+                continue
+            #print(d)
+            h[d]=job[1]
+            maxp=maxp+job[1]
+    return maxp
