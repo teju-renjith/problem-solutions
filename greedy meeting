@@ -1,0 +1,16 @@
+There is one meeting room in a firm. There are N meetings in the form of (start[i], end[i]) where start[i] is start time of meeting i and end[i] is finish time of meeting i.
+What is the maximum number of meetings that can be accommodated in the meeting room when only one meeting can be held in the meeting room at a particular time?
+
+     def maximumMeetings(self,n,start,end):
+        new=[]
+        for i in range(n):
+            new.append([start[i],end[i]])
+        new.sort(key=lambda new:new[1])       #sort wrt end time
+        count=1
+        limit=new[0][1]
+        for i in range(1,n):
+            if new[i][0] <= limit:            #if one meeting ends at 3 and next starts at 2 ...gulugulu...continue
+                continue
+            count+=1
+            limit=new[i][1]
+      return count
