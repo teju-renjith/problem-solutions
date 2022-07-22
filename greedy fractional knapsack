@@ -1,0 +1,14 @@
+def maximumValue(items, n, w):
+    new=[]
+    for i in items:
+        new.append([i[1],i[0],i[1]/i[0]])
+    new.sort(reverse=True,key=lambda new : new[2])
+    maxp=0
+    for i in new:
+        if i[1]<=w:
+            maxp=maxp+i[0]
+            w-=i[1]
+        else:
+            maxp=maxp+i[2]*w
+            break
+    return maxp
