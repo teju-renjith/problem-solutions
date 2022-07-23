@@ -1,0 +1,11 @@
+Given an array A[ ] of positive integers of size N, where each value represents the number of chocolates in a packet. Each packet can have a variable number of chocolates. There are M students, the task is to distribute chocolate packets among M students such that :
+1. Each student gets exactly one packet.
+2. The difference between maximum number of chocolates given to a student and minimum number of chocolates given to a student is minimum.
+
+def findMinDiff(self, A,N,M):
+        mini=100000000
+        A.sort()
+        for i in range(N-M+1):
+            val = A[M+i-1]-A[i]
+            mini=min(val,mini)
+        return mini
