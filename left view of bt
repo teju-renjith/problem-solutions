@@ -1,0 +1,14 @@
+def func(root,depth,result):
+    if root is None:
+        return 
+    if len(result)==depth:
+        result.append(root.data)
+        
+    func(root.left,depth+1,result)
+    func(root.right,depth+1,result)
+        
+def LeftView(root):
+    depth=0
+    res=[]
+    func(root,depth,res)
+    return res
